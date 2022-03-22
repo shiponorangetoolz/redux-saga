@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Form,Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/reducers/todoSlice';
 
 function Create() {
     const dispatch = useDispatch();
@@ -15,9 +14,9 @@ function Create() {
     const postData = (e) => {
         e.preventDefault();
         dispatch(
-            addTodo({
-                title: title,
-            })
+            // addTodo({
+            //     title: title,
+            // })
         );
     }
 

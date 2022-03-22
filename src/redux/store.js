@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import contactReducer from './reducers/contactSlice';
 import todoReducer from '../redux/reducers/todoSlice'
 import createSagaMiddleware from '@redux-saga/core';
-import contactSaga  from './sagas/contactSaga';
+import contactSaga  from './sagas/rootSaga';
 
 const saga = createSagaMiddleware();
 

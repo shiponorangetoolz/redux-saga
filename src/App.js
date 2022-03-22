@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import { Button,Row,Col,Table } from 'react-bootstrap';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContactListFetch, deleteContactAsync } from './redux/reducers/contactSlice';
+import { getContactListFetch,  } from './redux/reducers/contactSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,25 +15,19 @@ function App() {
 		dispatch(getContactListFetch());
 	}, [dispatch]);
 
-  const handleDeleteClick = (id) => {
-    dispatch(deleteContactAsync({ id }));
-  };
-
   return (
     <div className="App">
       {isLoading ? <Link to="/todos"><Button className='py-10'>Loading...</Button></Link> :
       <div className="col-md-6 mx-auto mt-10">
-      <Link to="/create"><Button className='py-10'>Add</Button></Link>
-      <Link to="/todos"><Button className='py-10'>Todo List</Button></Link>
+      <h6>User List</h6>
+      {/* <Link to="/create"><Button className='py-10'>Add</Button></Link> */}
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
             <th> Name</th>
-            <th>Phone</th>
+            <th>Uername</th>
             <th>Email</th>
-            <th>Address</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -43,13 +36,8 @@ function App() {
           <tr key={contact.id}>
             <td>{index + 1}</td>
             <td>{contact.name}</td>
-            <td>{contact.phone}</td>
+            <td>{contact.username}</td>
             <td>{contact.email}</td>
-            <td>{contact.address}</td>
-            <td>
-              <Link to={`contact/${contact.id}`}>Edit</Link>
-              <Button onClick={() => handleDeleteClick(contact.id)}>Delete</Button>
-            </td>
           </tr>
         )}
         </tbody>

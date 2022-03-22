@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Form,Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { addContactAsync } from '../redux/reducers/contactSlice';
 
 export default function Expenses() {
 
@@ -18,14 +17,6 @@ export default function Expenses() {
 
     const postData = (e) => {
         e.preventDefault();
-        dispatch(
-            addContactAsync({
-                name: name,
-                phone: phone,
-                email: email,
-                address: address,
-            })
-        );
     }
     return (
       <main style={{ padding: "1rem 10rem" }}>
