@@ -12,6 +12,7 @@ export const counterSlice = createSlice({
 	},  
 
 	getContactsListSuccess: (state, action) => {
+		console.log(action.payload);
         state.contacts= action.payload;
 		state.isLoading = false;
     },

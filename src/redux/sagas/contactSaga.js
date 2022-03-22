@@ -1,11 +1,16 @@
 import {all, call,put,takeEvery} from 'redux-saga/effects';
-import {getContactsListSuccess} from '../reducers/contactSlice';
+import {getContactsListSuccess, getContactListError} from '../reducers/contactSlice';
+import {fetchUserData} from '../../Api/contactApi'
 
 function* getContactListFetch() {
-    const contacts = yield call( ()=> fetch('https://jsonplaceholder.typicode.com/users') );
-    const formattedContacts = yield contacts.json();
-    const formattedContactsQuery = formattedContacts.slice(0,10);
-    yield put(getContactsListSuccess(formattedContactsQuery));
+    try {
+        const contacts = yield call( fetchUserData );
+        const formattedContactsQuery = contacts.slice(0,10);
+        yield put(getContactsListSuccess(formattedContactsQuery));
+    } catch (error) {
+        yield put(getContactListError());
+    }
+    
 }
 
 function* contactWatcher() {
