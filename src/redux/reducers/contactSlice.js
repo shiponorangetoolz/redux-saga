@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const counterSlice = createSlice({
+export const contactSlice = createSlice({
   name: 'contacts',
   initialState:{
 	  isLoading:false,
@@ -23,6 +23,6 @@ export const counterSlice = createSlice({
   },
 })
 
-export const {getContactListFetch, getContactsListSuccess, getContactListError} = counterSlice.actions
+export const {getContactListFetch, getContactsListSuccess, getContactListError} = contactSlice.actions
 
-export default counterSlice.reducer
+export default contactSlice.reducer

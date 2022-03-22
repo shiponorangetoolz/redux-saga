@@ -10,7 +10,6 @@ function* getContactListFetch() {
     } catch (error) {
         yield put(getContactListError());
     }
-    
 }
 
 function* contactWatcher() {
